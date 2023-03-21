@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Search Engine Results</title>
+    <style>
+      body {
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        background-color: #fff;
+        color: #333;
+        font-size: 14px;
+        line-height: 1.42857143;
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        font-size: 24px;
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+        background-color: #f5f5f5;
+        border-bottom: 1px solid #ddd;
+      }
+
+      table {
+        border-collapse: collapse;
+        margin: 20px auto;
+        width: 90%;
+        max-width: 1000px;
+      }
+
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+        vertical-align: top;
+        border: none;
+      }
+
+      th {
+        font-weight: bold;
+        background-color: #f5f5f5;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      tr:hover {
+        background-color: #f5f5f5;
+      }
+
+      a {
+        color: #1a0dab;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .no-results {
+        font-size: 24px;
+        text-align: center;
+        margin-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Search Results</h1>
+    {% if papers %}
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Authors</th>
+          <th>Publication Date</th>
+          <th>Author Profile link</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for paper in papers %}
+        <tr>
+          <td>
+            <a href="{{ paper.title_link }}"><b>{{ paper.title }}</b></a>
+            <br>
+            <span style="font-size: 12px;">{{ paper.description }}</span>
+          </td>
+          <td>{{ paper.authors }}</td>
+          <td>{{ paper.year }}</td>
+          <td>{% for author_link in paper.author_links.split(", ") %}<a href="{{ author_link.strip('\'"') }}">{{ author_link.strip('\'"') }}</a><br>{% endfor %}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <div class="no-results">
+      No results found.
+    </div>
+    {% endif %}
+  </body>
+</html>

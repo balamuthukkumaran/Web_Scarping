@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Search Engine</title>
+    <style>
+      /* Set background color */
+      body {
+        background-color: #261c1c;
+      }
+
+      /* Center the form vertically and horizontally */
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #fff;
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+        border-radius: 10px;
+        padding: 20px;
+      }
+
+      /* Style the input field */
+      input[type="text"] {
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        font-size: 1.2em;
+        width: 50%;
+        max-width: 500px;
+      }
+
+      /* Style the submit button */
+      input[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.2em;
+        margin-left: 10px;
+        cursor: pointer;
+      }
+
+      /* Hover effect for submit button */
+      input[type="submit"]:hover {
+        background-color: #0069d9;
+      }
+
+      /* Style the placeholder text */
+      ::placeholder {
+        color: #999;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <form method="post" action="/search"> 
+        <input type="text" name="query" placeholder="Search here...">
+        <input type="submit" value="Search">
+      </form>
+    </div>
+  </body>
+</html>
